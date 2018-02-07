@@ -1,0 +1,8 @@
+Style/StringLiterals:
+ EnforcedStyle: double_quotes
+
+Layout/IndentationWidth:
+ Width: 2
+
+Style/Documentation:
+ Enabled: false
