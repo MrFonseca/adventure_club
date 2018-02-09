@@ -1,0 +1,23 @@
+<div class="h1">Kaaporas Clube de Aventura</div>
+<div class="h3">Lista de Usuários Cadastrados</div>
+<table>
+  <thead>
+    <th>E-mail</th>
+    <th>Perfil de Acesso</th>
+    <th colspan="2"></th>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+      <td><%= link_to "Editar", edit_user_path(user) %></td>
+      <td>
+        <%= link_to "Excluir", user_path(user),
+                               method: :delete,
+                               data: { confirm: "Você tem certeza?" } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
