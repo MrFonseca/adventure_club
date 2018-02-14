@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :profile
   enum role: { member: 0, technical: 1, financial: 2, manager: 3 }
   validates :role, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
