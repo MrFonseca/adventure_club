@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: true
+  validates :registration_date, presence: true
   before_validation :normalize_email
   has_secure_password
 
