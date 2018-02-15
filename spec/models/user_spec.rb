@@ -34,6 +34,14 @@ RSpec.describe User, type: :model do
         expect(subject.errors[:email]).to be_present
       end
     end
+
+    describe "#registration_date" do
+      it "is not valid with empty registration_date" do
+        subject.registration_date = ""
+        expect(subject).to be_invalid
+        expect(subject.errors[:registration_date]).to be_present
+      end
+    end
   end
 
   describe "callbacks" do
