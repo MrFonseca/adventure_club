@@ -5,7 +5,7 @@ FactoryBot.define do
     end
     password "foobar"
     password_confirmation "foobar"
-    role :member
+    role :"Sócio"
     registration_date "2008-03-25"
   end
 end
