@@ -1,17 +1,33 @@
 <%= form_for(@user) do |f| %>
   <%= render "shared/error_messages" %>
-  
-  <%= f.label :email, "E-mail" %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password, "Senha" %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation, "Repetir senha" %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.label :role, "Perfil de Acesso" %>
-  <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]} %>
-
-  <%= f.submit "Enviar dados" %>
+  <div class="form-group">
+    <%= f.label :email, "E-mail" %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, "Senha" %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "Repetir senha" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :registration_date, "Data de associação" %>
+    <div class="form-row">
+      <%= f.date_select :registration_date, start_year: 2007, use_month_numbers: true, order: [:day, :month, :year], use_two_digit_numbers: true, with_css_classes: { day: "form-control col mx-1", month: "form-control col mx-1", year: "form-control col mx-1" } %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="d-block">Perfil de Acesso</div>
+    <% @roles.each do |r| %>
+      <div class="form-check">
+        <%= f.radio_button :role, r[0], class: "form-check-input" %>
+        <%= f.label :role, "#{r[0]}", class: "form-check-label" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Enviar dados", class: "btn btn-success btn-block" %>
+  </div>
 <% end %>
