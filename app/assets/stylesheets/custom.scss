@@ -1,0 +1,9 @@
+.bg-green {
+  background-color: green;
+}
+
+@each $color, $value in $theme-colors {
+  .alert-#{$orange} {
+    @include alert-variant(theme-color-level($color, -10), theme-color-level($color, -9), theme-color-level($color, 6));
+  }
+}
